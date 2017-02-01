@@ -10,7 +10,7 @@ namespace BTree
         public Node<T> Right { get; set; }
         public T Value;
     }
-    public class BinaryTree<T> where T : IComparable<T>
+    public class BinaryTree<T> where T : IComparable<T>, IEquatable<T>
     {
 
         public Node<T> Root { get; set; }

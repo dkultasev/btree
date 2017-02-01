@@ -226,17 +226,22 @@ namespace BTree.Test
             Assert.AreEqual(b.Count, 1);
         }
 
-        class MyInt : IComparable<MyInt>
+        class MyInt : IComparable<MyInt>, IEquatable<MyInt>
         {
             public MyInt(int value)
             {
                 Value = value;
             }
 
-            public int Value { get; set; }
+            private int Value { get; set; }
             public int CompareTo(MyInt other)
             {
                 return Value.CompareTo(other.Value);
+            }
+
+            public bool Equals(MyInt other)
+            {
+                return other != null && Value.Equals(other.Value);
             }
         }
     }
