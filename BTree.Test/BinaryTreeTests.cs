@@ -214,6 +214,31 @@ namespace BTree.Test
 
             Assert.AreEqual(b.Root.Left.Left.Value, 3);
         }
+
+        [TestMethod]
+        public void Test_Always_Run()
+        {
+            var b = new BinaryTree<MyInt>();
+
+            b.Insert(new MyInt(1));
+            b.Insert(new MyInt(1));
+
+            Assert.AreEqual(b.Count, 1);
+        }
+
+        class MyInt : IComparable<MyInt>
+        {
+            public MyInt(int value)
+            {
+                Value = value;
+            }
+
+            public int Value { get; set; }
+            public int CompareTo(MyInt other)
+            {
+                return Value.CompareTo(other.Value);
+            }
+        }
     }
 }
 
